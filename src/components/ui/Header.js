@@ -96,7 +96,14 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.common.orange
     },
     drawerItemSelected: {
-        opacity: 1
+        opacity: 1,
+        "& .MuiListItemText-root": {
+            opacity: 1
+        }
+    },
+    appbar: {
+        zIndex: theme.zIndex.modal + 1,
+
     }
 }))
 
@@ -167,10 +174,10 @@ export default function Header(props) {
 
     const tabs = (
         <React.Fragment>
-            <Tabs value={value}  onChange={handleChange} className={classes.tabContainer} indicatorColor="primary">
+            <Tabs  value={value}  onChange={handleChange} className={classes.tabContainer} indicatorColor="primary">
 
                 {routes.map((route, index) => (
-                    <Tab className={classes.tab} component={Link} to={route.link} label={route.name} aria-owns={route.ariaOwns} aria-haspopup={route.ariaPopup} onMouseOver={route.mouseOver}/>
+                    <Tab key={`${route}${index}`} className={classes.tab} component={Link} to={route.link} label={route.name} aria-owns={route.ariaOwns} aria-haspopup={route.ariaPopup} onMouseOver={route.mouseOver}/>
                 ))}
 
             </Tabs>
@@ -178,6 +185,8 @@ export default function Header(props) {
                 Free Estimate
             </Button>
             <Menu 
+            style={{zIndex: 1302}}
+            keepMounted
             elevation={0}
             classes={{paper: classes.menu}}
             id="simple-menu" 
@@ -185,7 +194,7 @@ export default function Header(props) {
 
                 {menuOption.map((option,i) => (
                     <MenuItem 
-                    key={option} 
+                    key={`${option}${i}`} 
                     component={Link} 
                     to={option.link} 
                     classes={{root: classes.menuItem}} onClick={(event)=> {handleMenuItemClick(event, i); setValue(1); handleClose()}} selected={i===selectedIndex && value ===1}>
@@ -199,19 +208,22 @@ export default function Header(props) {
     const drawer = (
         <React.Fragment>
             <SwipeableDrawer classes={{paper: classes.drawer}} disableBackdropTransition={iOS} disableDiscovery={iOS} open={openDrawer} onClose={() => setOpenDrawer(false)} onOpen={() => setOpenDrawer(true)}>
+                <div className={classes.toolbarMargin} />
 
             <List disablePadding>
 
                 {routes.map(route => (
-                    <ListItem divider button component={Link} to={route.link} selected={value === route.activeIndex} onClick={() => {setOpenDrawer(false); setValue(route.activeIndex)}}>
-                        <ListItemText className={ value === route.activeIndex ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem } disableTypography>
+                    <ListItem key={`${route}${route.activeIndex}`}  divider button component={Link} to={route.link} 
+                    classes={{selected:classes.drawerItemSelected}}
+                    selected={value === route.activeIndex} onClick={() => {setOpenDrawer(false); setValue(route.activeIndex)}}>
+                        <ListItemText className={classes.drawerItem} disableTypography>
                             {route.name}
                         </ListItemText>
                     </ListItem>
                 ))}
 
-                <ListItem selected={value===5} className={classes.drawerItemEstimate} onClick={() => {setOpenDrawer(false); setValue(5)}} divider button component={Link} to='/estimate'>
-                    <ListItemText className={ value === 5 ?[classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>
+                <ListItem selected={value===5} classes={{root: classes.drawerItemEstimate, selected: classes.drawerItemSelected }} onClick={() => {setOpenDrawer(false); setValue(5)}} divider button component={Link} to='/estimate'>
+                    <ListItemText className={classes.drawerItem} disableTypography>
                         Free Estimate
                     </ListItemText>
                 </ListItem>
@@ -225,7 +237,7 @@ export default function Header(props) {
 
     return(
         <React.Fragment>
-        <AppBar position='fixed'>
+        <AppBar className={classes.appbar} position='fixed'>
             <Toolbar disableGutters>
                 <Button component={Link} to="/" className={classes.logoContainer} onClick={() => setValue(0)} disableRipple>
                      <img src={logo} alt="company" className={classes.logo}/>
