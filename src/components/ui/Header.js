@@ -185,12 +185,13 @@ export default function Header(props) {
                 Free Estimate
             </Button>
             <Menu 
+            id="simple-menu" 
+            classes={{paper: classes.menu}}
+            anchorEl={anchorEl} open={openMenu} onCLose={handleClose} MenuListProps={{onMouseLeave: handleClose}}
+            elevation={0}
             style={{zIndex: 1302}}
             keepMounted
-            elevation={0}
-            classes={{paper: classes.menu}}
-            id="simple-menu" 
-            anchorEl={anchorEl} open={openMenu} onCLose={handleClose} MenuListProps={{onMouseLeave: handleClose}}> 
+            > 
 
                 {menuOption.map((option,i) => (
                     <MenuItem 

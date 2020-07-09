@@ -3,6 +3,7 @@ import { ThemeProvider } from '@material-ui/styles'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Header from './ui/Header'
 import theme from './ui/Theme'
+import Footer from '../components/ui/Footer'
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <BrowserRouter>
       <Header /> 
       <Switch>
-        <Route exact path="/" component={() =><div>Home</div>} />
+        <Route exact path="/" component={() =><div style={{height:"2000px"}} >Home</div>} />
         <Route exact path="/services" component={() =><div>Services</div>} />
 
         <Route exact path="/customsoftware" component={() =><div>Custom Software</div>} />
@@ -27,6 +28,7 @@ function App() {
         
         <Route exact path="/estimate" component={() =><div>Estimate</div>} />
       </Switch>
+      <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
