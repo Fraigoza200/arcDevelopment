@@ -166,7 +166,10 @@ export default function Header(props) {
                             }
                     } 
                     break;
-
+                case '/estimate': 
+                    props.setValue(5);
+                
+                    break;
                     default: 
                     break;
             }
@@ -182,13 +185,13 @@ export default function Header(props) {
                 ))}
 
             </Tabs>
-            <Button variant='contained' color="secondary" className={classes.button}>
+            <Button component={Link} to='/estimate' variant='contained' color="secondary" className={classes.button} onClick={() => props.setValue(5)}>
                 Free Estimate
             </Button>
             <Menu 
             id="simple-menu" 
             classes={{paper: classes.menu}}
-            anchorEl={anchorEl} open={openMenu} onCLose={handleClose} MenuListProps={{onMouseLeave: handleClose}}
+            anchorEl={anchorEl} open={openMenu} onClose={handleClose} MenuListProps={{onMouseLeave: handleClose}}
             elevation={0}
             style={{zIndex: 1302}}
             keepMounted
