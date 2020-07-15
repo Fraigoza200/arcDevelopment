@@ -37,9 +37,8 @@ const useStyles = makeStyles(theme => ({
         height: 45,
         width: 145, 
         marginRight: 40, 
-        "&:hover": {
-            backgroundColor: theme.palette.secondary.light
-        }
+       
+        
     }, 
     buttonContainer: {
         marginTop: '1em'
@@ -274,11 +273,11 @@ export default function LandingPage(props) {
         <Grid item>
             {/* Information Block */}
 
-            <Grid container direction="row" style={{height: '80em'}} alignItems="center">
+            <Grid container direction="row" style={{height: '80em'}} alignItems="center" className={classes.infoBackground}>
 
-                <Grid item container style={{position: 'absolute', textAlign: matchesXS ? 'center' : 'inherit' }} direction={matchesXS ? 'column' : 'row'}>
+                <Grid item container style={{ textAlign: matchesXS ? 'center' : 'inherit' }} direction={matchesXS ? 'column' : 'row'}>
                 <Grid item sm style={{marginLeft: matchesXS ? 0 : matchesSM ? '2em' : '5em'}}>
-                    <Grid container direction="column">
+                    <Grid container direction="column" style={{marginBottom: matchesXS ? '10em': 0}}>
                         <Typography variant='h2' style={{color: 'white'}}>
                             About Us
                         </Typography>
@@ -313,7 +312,7 @@ export default function LandingPage(props) {
                 </Grid>
                 </Grid>
 
-                <div className={classes.infoBackground}></div>
+             
             </Grid>
         </Grid>
 

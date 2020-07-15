@@ -42,6 +42,9 @@ const useStyles = makeStyles(theme => ({
         fontSize: '1.5rem',
         marginRight: '5em',
         marginLeft: '2em',
+        "&:hover": {
+            backgroundColor: theme.palette.secondary.light
+        },
         [theme.breakpoints.down('sm')]: {
             marginRight: 0,
             marginLeft: 0
