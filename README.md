@@ -1,6 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Overview or application
+This project utilizes the Material-UI library in order to create a fully functional web pages. This is a service based application where a user can review the services that are provided by ArcDevelopment, send emails to the support team, and schedule appointments with an advisor to go over the desired services. 
+
 
 In the project directory, you can run:
 
