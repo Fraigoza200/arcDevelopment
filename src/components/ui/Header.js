@@ -93,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     drawerItem: {
         ...theme.typography.tab,
         color: 'white',
-        opacity: 0.7
+        opacity: 0.5
     },
     drawerItemEstimate:{
         backgroundColor: theme.palette.common.orange
