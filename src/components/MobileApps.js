@@ -15,6 +15,8 @@ import access from '../assets/extendAccess.svg'
 import engagement from '../assets/increaseEngagement.svg'
 import integrationAnimation from '../animations/integrationAnimation/data.json'
 
+import CallToAction from './ui/CallToAction'
+
 const useStyles = makeStyles(theme => ({
 
     heading: {
@@ -134,7 +136,7 @@ export default function MobileApps(props) {
         <Grid item container direction={matchesMD ? 'column' : 'row'} style={{marginBottom: '15em'}} className={classes.rowContainer}>
             <Grid item container direction='column' md alignItems='center'>
                 <Grid item>
-                    <Typography variant='h4' gutterBottomn align='center'>Extend Functionality</Typography>
+                    <Typography variant='h4' gutterBottom align='center'>Extend Functionality</Typography>
                 </Grid>
                 <Grid item>
                     <img src={swiss} alt='swissarmy knife' />
@@ -158,6 +160,10 @@ export default function MobileApps(props) {
                     <img src={engagement} alt='app with notification' />
                 </Grid>
             </Grid>
+        </Grid>
+
+        <Grid item>
+            <CallToAction setValue={props.setValue} />
         </Grid>
 
         </Grid>
