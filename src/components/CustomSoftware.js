@@ -134,7 +134,7 @@ export default function CustomSoftware(props) {
                <Hidden mdDown>                
                 <Grid item className={classes.arrowContainer}>
                     <IconButton style={{backgroundColor: 'transparent'}} component={Link} to='/mobileapps' onClick={ () => props.setSelectedIndex(2)}>
-                        <img src={forwardArrow} alt='Forware to iOS/Android Page' />
+                        <img src={forwardArrow} alt='Forward to iOS/Android Page' />
                     </IconButton>
                 </Grid>
              </Hidden> 
