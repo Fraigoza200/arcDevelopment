@@ -7,8 +7,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Hidden from "@material-ui/core/Hidden";
 
 import history from "../assets/history.svg";
-import profile from "../assets/founder.jpg";
-import yearbook from "../assets/yearbook.svg";
+import avatarImage from "../assets/avatarImage.jpg";
+import portfolioScreenShot from "../assets/portfolioScreenShot.png";
 import puppy from "../assets/puppy.svg";
 
 import CallToAction from "./ui/CallToAction";
@@ -181,20 +181,17 @@ export default function About(props) {
             Francisco Raigoza, Founder
           </Typography>
           <Typography variant="body1" paragraph align="center">
-            I started coding when I was 9 years old.
+            Motivated, Eager, and Confident.
           </Typography>
         </Grid>
         <Grid item>
-          <Avatar alt="founder" src={profile} className={classes.avatar} />
+          <Avatar alt="founder" src={avatarImage} className={classes.avatar} />
         </Grid>
         <Grid item container justify={matchesMD ? "center" : undefined}>
           <Hidden lgUp>
             <Grid item lg style={{ maxWidth: "45em", padding: "1.25em" }}>
               <Typography variant="body1" align="center" paragraph>
-                I taught myself basic coding from a library book in third grade,
-                and ever since then my passion has solely been set on learning —
-                learning about computers, learning mathematics and philosophy,
-                studying design, always just learning.
+                I attended the Coding BootCamp at The University of California Irvine. I was challenged with understanding syntax and content. Through continous hard work and numerous hours reading documentation and watching videos, I was able to grab a hold and understand technologies such as React, Express, Node, MongoDB, MySQL, NoSQL, and Javascipt. 
               </Typography>
               <Typography variant="body1" align="center" paragraph>
                 Now I’m ready to apply everything I’ve learned, and to help
@@ -212,24 +209,21 @@ export default function About(props) {
           >
             <Grid item>
               <img
-                src={yearbook}
-                alt="yearbook page about founder"
+                src={portfolioScreenShot}
+                alt="background Image of my portfolio" width='100%'
                 style={{ maxWidth: matchesMD ? 300 : undefined }}
               />
             </Grid>
             <Grid item>
               <Typography variant="caption">
-                a page from my Sophomore yearbook
+                
               </Typography>
             </Grid>
           </Grid>
           <Hidden mdDown>
             <Grid item lg style={{ maxWidth: "45em", padding: "1.25em" }}>
               <Typography variant="body1" align="center" paragraph>
-                I taught myself basic coding from a library book in third grade,
-                and ever since then my passion has solely been set on learning —
-                learning about computers, learning mathematics and philosophy,
-                studying design, always just learning.
+              I attended the Coding BootCamp at The University of California Irvine. I was challenged with understanding syntax and content. Through continous hard work and numerous hours reading documentation and watching videos, I was able to grab a hold and understand technologies such as React, Express, Node, MongoDB, MySQL, NoSQL, and Javascipt. 
               </Typography>
               <Typography variant="body1" align="center" paragraph>
                 Now I’m ready to apply everything I’ve learned, and to help
@@ -253,7 +247,7 @@ export default function About(props) {
             </Grid>
             <Grid item>
               <Typography variant="caption">
-                my miniature dapple dachshund, Sterling
+                
               </Typography>
             </Grid>
           </Grid>
