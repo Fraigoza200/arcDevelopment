@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Dialog from '@material-ui/core/Dialog'
+import DialogContent from '@material-ui/core/DialogContent'
 import ButtonArrow from './ui/ButtonArrow'
 
 import background from '../assets/background.jpg'
@@ -69,6 +71,10 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.common.orange,
         "&:hover": {
             backgroundColor: theme.palette.secondary.light
+        },
+        [theme.breakpoints.down('sm')] : {
+            height:  40,
+            width: 225
         }
     }
 
@@ -79,6 +85,7 @@ export default function Contact(props) {
     const theme = useTheme()
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'))
     const matchesMD = useMediaQuery(theme.breakpoints.down('md'))
+    const matchesXS = useMediaQuery(theme.breakpoints.down('xs'))
     const [name,setName] = useState('')
 
     const [email,setEmail] = useState('')
@@ -88,6 +95,8 @@ export default function Contact(props) {
     const [phoneHelper, setPhoneHelper] = useState('')
 
     const [message,setMessage] = useState('')
+
+    const [open,setOpen] = useState(false)
 
     const onChange = event => {
         let valid
@@ -163,11 +172,46 @@ export default function Contact(props) {
                  <TextField value={message} fullWidth multiline rows={10} id='message' onChange={(event) => setMessage(event.target.value)} className={classes.message} InputProps={{disableUnderline:true}} />
              </Grid>
              <Grid item container justify="center" style={{marginTop: '2em'}}>
-                 <Button  disabled={name.length === 0 || message.length === 0 || email.length === 0 || phone.length ===0 || phoneHelper.length !==0 || emailHelper.length !== 0} variant='contained' className={classes.sendButton}>Send Message <img src={airplane} alt='paper airplane' style={{marginLeft: '1em'}}/></Button>
+                 <Button  disabled={name.length === 0 || message.length === 0 || email.length === 0 || phone.length ===0 || phoneHelper.length !==0 || emailHelper.length !== 0} variant='contained' className={classes.sendButton} onClick={() => setOpen(true)}>Send Message <img src={airplane} alt='paper airplane' style={{marginLeft: '1em'}}/></Button>
              </Grid>
                </Grid>
            </Grid>
             </Grid>
+
+        <Dialog style={{zIndex:1302}} open={open} onClose={() =>setOpen(false)} fullScreen={matchesXS} PaperProps={{style:{paddingTop: matchesXS ? '1em' :'5em', paddingBottom: matchesXS ? '1em' :'5em', paddingRight:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? "10em" : '20em', paddingLeft:matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? "10em" : '20em'} }}> 
+        <DialogContent>
+            <Grid container direction='column'>
+                <Grid item>
+                    <Typography align="center" variant='h4' gutterBottom>
+                        Confirm Message
+                    </Typography>
+                </Grid>
+                <Grid item style={{marginBottom: '0.5em'}}>
+                     <TextField label="Name" id="name"  fullWidth value={name} onChange={(event) => setName(event.target.value)}/>
+                 </Grid>
+                 <Grid item style={{marginBottom: '0.5em'}}>
+                 <TextField label="Email" id="email" fullWidth value={email} onChange={onChange} error={emailHelper.length !== 0} helperText={emailHelper} />
+                 </Grid>
+                 <Grid item style={{marginBottom: '0.5em'}}>
+                 <TextField label="Phone" fullWidth id="phone" value={phone} onChange={onChange} error={phoneHelper.length !== 0} helperText={phoneHelper} />
+                 </Grid>
+             </Grid>
+             <Grid item style={{maxWidth: matchesXS  ? '100%' : '20em'}}>
+                 <TextField value={message} fullWidth multiline rows={10} id='message' onChange={(event) => setMessage(event.target.value)} className={classes.message} InputProps={{disableUnderline:true}} />
+             </Grid>
+             <Grid item>
+                 <Grid item container direction={matchesSM ? 'column' : 'row'} style={{marginTop: '2em'}} alignItems='center'>
+                     <Grid item>
+                     <Button color="primary" onClick={() => setOpen(false)} style={{fontWeight:300}}>Cancel</Button>
+                     </Grid>
+                     <Grid item>
+                     <Button  disabled={name.length === 0 || message.length === 0 || email.length === 0 || phone.length ===0 || phoneHelper.length !==0 || emailHelper.length !== 0} variant='contained' className={classes.sendButton} onClick={() => setOpen(true)}>Send Message <img src={airplane} alt='paper airplane' style={{marginLeft: '1em'}}/></Button>
+                     </Grid>
+                 </Grid>
+             </Grid>
+        </DialogContent>
+        </Dialog>
+
             <Grid item container direction={matchesMD ? 'column' : 'row'} alignItems="center" justify={matchesMD ? 'center' : undefined} className={classes.background} lg={8} xl={9}>
             <Grid item style={{ marginLeft: matchesMD ? 0 :'3em,', textAlign: matchesMD ? 'center': 'inherit'}}>
             <Grid container direction="column">
